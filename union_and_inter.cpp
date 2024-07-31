@@ -43,6 +43,7 @@ int main(){
         }
         else{
             if (prev != b[l2] || prev == -1){
+                prev = b[l2];
                 cout << b[l2] << " ";
             }
             l1++, l2++;

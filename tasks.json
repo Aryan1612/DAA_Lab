@@ -6,6 +6,7 @@
             "label": "C/C++: g++ build active file",
             "command": "/usr/bin/g++",
             "args": [
+                "-O2",
                 "-fdiagnostics-color=always",
 				"-g",
 				"-Wall",
@@ -27,12 +28,12 @@
         {
 			"label": "run without debugging",
 			"type": "shell",
-			"command": "g++ -fdiagnostics-color=always -g -Wall -std=c++17 -o ${fileBasenameNoExtension} ${file} && ./${fileBasenameNoExtension} < input.txt > output.txt",
+			"command": "g++ -O2 -fsanitize=address -fsanitize=undefined -fdiagnostics-color=always -Wshadow -Wall -g -std=c++17 -o ${fileBasenameNoExtension} ${file} && ./${fileBasenameNoExtension} < input.txt > output.txt",
 			"group": {
 				"kind": "build",
 				"isDefault": true
 			}
 		}
-		
+		//g++ -O2 -fsanitize=address -fsanitize=undefined -fdiagnostics-color=always -Wshadow -Wall -g -std=c++17 -o ${fileBasenameNoExtension} ${file} && ./${fileBasenameNoExtension} < input.txt > output.txt && /usr/bin/time -p ./${fileBasenameNoExtension} < input.txt > output.txt
     ]
 }
